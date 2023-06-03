@@ -1,0 +1,52 @@
+
+
+
+let string='';
+let str1='',str2='';
+let c=0;
+const btns=document.querySelectorAll('button');
+Array.from(btns).forEach((item)=>
+{
+    item.addEventListener('click',(e)=>
+    {
+        if(e.target.innerHTML == '='){
+            string = eval(string);
+            document.getElementById("inputBox").innerHTML=string;
+        }
+
+        else if(e.target.innerHTML == 'AC'){
+            string = "";
+            document.getElementById("inputBox").innerHTML=string;
+        }
+        else if(e.target.innerHTML == 'DEL'){
+            string = string.substring(0, string.length-1);
+            document.getElementById("inputBox").innerHTML=string;
+        }
+        else if(e.target.innerHTML=='%'){
+            
+            a=Array.from(string);
+            for (const i of a) {
+                toString(i)
+                if(i=='*'){
+                    break;
+                }
+                str1+=i;
+                c++;
+            }
+            for (i=c+1;a[i]!='%';i++){
+                toString(i)
+                if(i=='%'){
+                    break;
+                }
+                str2+=a[i];
+                
+            }
+            string=(str1*str2)/100;
+            document.getElementById("inputBox").innerHTML=string;
+        }
+        else{
+            str+=e.target.innerHTML;
+            document.getElementById("inputBox").innerHTML=string;
+        }
+    })
+})
